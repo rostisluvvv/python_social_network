@@ -18,7 +18,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
 
-    'profiles',
+    'src.profiles',
 ]
 
 MIDDLEWARE = [
