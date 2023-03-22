@@ -8,7 +8,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,7 +18,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
 
-    'src.profiles.apps.ProfilesConfig',
+    'profiles',
 ]
 
 MIDDLEWARE = [
