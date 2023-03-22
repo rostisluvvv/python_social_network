@@ -29,7 +29,7 @@ class UserNetAdmin(UserAdmin):
              ),
          },),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-        (_('info'), {'fields': ('phone', 'avatar', 'first_login')}),
+        (_('info'), {'fields': ('phone', 'avatar', 'gender')}),
     )
 
 
