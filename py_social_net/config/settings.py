@@ -86,7 +86,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -99,3 +99,5 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
    # 'AUTH_HEADER_TYPES': ('JWT',),
 }
+
+AUTH_USER_MODEL = 'profiles.UserNet'
