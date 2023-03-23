@@ -15,7 +15,7 @@ class ListCommentSerializer(serializers.ModelSerializer):
     """Список комментариев записей к посту"""
     text = serializers.SerializerMethodField()
     children = RecursiveSerializer(many=True)
-
+    user = serializers.ReadOnlyField(source='user.username')
     def get_text(self, obj):
         if obj.deleted:
             return None
@@ -26,6 +26,7 @@ class ListCommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = ('id',
                   'post',
+                  'user',
                   'text',
                   'created_date',
                   'update_date',
@@ -35,31 +36,31 @@ class ListCommentSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     """Вывод и редактирование поста """
-    author_user = serializers.ReadOnlyField(source='author_user.username')
-    comment = ListCommentSerializer(many=True, read_only=True)
+    user = serializers.ReadOnlyField(source='user.username')
+    comments = ListCommentSerializer(many=True, read_only=True)
+    view_count = serializers.CharField(read_only=True)
 
     class Meta:
         model = Post
         fields = ('id',
                   'create_date',
-                  'user_author',
+                  'user',
                   'text',
-                  'comment',
+                  'comments',
                   'view_count')
 
 
 class ListPostSerializer(serializers.ModelSerializer):
     """Список записей в группе"""
-    author_user = serializers.ReadOnlyField(source='author_user.username')
+    user = serializers.ReadOnlyField(source='user.username')
 
     class Meta:
         model = Post
         fields = ('id',
                   'create_date',
-                  'user_author',
+                  'user',
                   'text',
-                  'comment',
-                  'view_count',
+                  # 'view_count',
                   'comments_count')
 
 

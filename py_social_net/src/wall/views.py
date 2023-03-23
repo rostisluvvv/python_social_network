@@ -15,7 +15,7 @@ class PostListView(generics.ListAPIView):
     serializer_class = ListPostSerializer
 
     def get_queryset(self):
-        return Post.objects.filter(author_user_id=self.kwargs.get('pk'))
+        return Post.objects.filter(user_id=self.kwargs.get('pk'))
 
 
 class PostView(CreateRetrieveUpdateDestroy):
@@ -28,7 +28,7 @@ class PostView(CreateRetrieveUpdateDestroy):
                                     'destroy': [IsAuthor]}
 
     def perform_create(self, serializer):
-        serializer.save(author_user=self.request.user)
+        serializer.save(user=self.request.user)
 
 
 class CommentsView(CreateUpdateDestroy):
@@ -40,7 +40,7 @@ class CommentsView(CreateUpdateDestroy):
                                     'destroy': [IsAuthor]}
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(user=self.request.user)
 
     def perform_destroy(self, instance):
         instance.deleted = True

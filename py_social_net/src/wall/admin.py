@@ -8,7 +8,7 @@ from ..wall.models import Comment, Post
 class PostAdmin(admin.ModelAdmin):
     """Admin configuration for Post model."""
     list_display = (
-        'author_user',
+        'user',
         'moderation',
         'create_date',
         'published',
