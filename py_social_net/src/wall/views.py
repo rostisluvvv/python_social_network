@@ -5,7 +5,6 @@ from ..base.classes import (CreateUpdateDestroy,
 from ..base.permissions import IsAuthor
 from .models import Post, Comment
 from ..wall.serializers import (CreateCommentSerializer,
-                                ListCommentSerializer,
                                 PostSerializer,
                                 ListPostSerializer)
 
