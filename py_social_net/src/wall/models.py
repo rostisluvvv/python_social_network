@@ -15,6 +15,9 @@ class Post(models.Model):
     author_user = models.ForeignKey(settings.AUTH_USER_MODEL,
                                     on_delete=models.CASCADE)
 
+    def comments_count(self):
+        return self.comments.count()
+
     def __str__(self):
         return f'Post by {self.author_user}'
 
