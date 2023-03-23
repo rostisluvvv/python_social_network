@@ -10,26 +10,26 @@ class MixedPermission:
             return [permission() for permission in self.permission_classes]
 
 
-class MixedPermissionViewSetDS(MixedPermission, viewsets.ViewSet):
+class MixedPermissionViewSet(MixedPermission, viewsets.ViewSet):
     pass
 
 
-class MixedPermissionGenericViewSetDS(MixedPermission, viewsets.GenericViewSet):
+class MixedPermissionGenericViewSet(MixedPermission, viewsets.GenericViewSet):
     pass
 
 
-class CreateUpdateDestroyDS(mixins.CreateModelMixin,
-                            mixins.UpdateModelMixin,
-                            mixins.DestroyModelMixin,
-                            MixedPermission,
-                            viewsets.GenericViewSet):
+class CreateUpdateDestroy(mixins.CreateModelMixin,
+                          mixins.UpdateModelMixin,
+                          mixins.DestroyModelMixin,
+                          MixedPermission,
+                          viewsets.GenericViewSet):
     pass
 
 
-class CreateRetrieveUpdateDestroyDS(mixins.CreateModelMixin,
-                                    mixins.RetrieveModelMixin,
-                                    mixins.UpdateModelMixin,
-                                    mixins.DestroyModelMixin,
-                                    MixedPermission,
-                                    viewsets.GenericViewSet):
+class CreateRetrieveUpdateDestroy(mixins.CreateModelMixin,
+                                  mixins.RetrieveModelMixin,
+                                  mixins.UpdateModelMixin,
+                                  mixins.DestroyModelMixin,
+                                  MixedPermission,
+                                  viewsets.GenericViewSet):
     pass
