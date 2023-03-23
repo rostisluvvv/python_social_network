@@ -62,5 +62,3 @@ class ListPostSerializer(serializers.ModelSerializer):
                   'text',
                   # 'view_count',
                   'comments_count')
-
-
