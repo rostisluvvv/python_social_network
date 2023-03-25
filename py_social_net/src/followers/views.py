@@ -14,7 +14,7 @@ class ListFollowerView(generics.ListAPIView):
         return Follower.objects.filter(user=self.request.user)
 
 
-class AddFollowerView(views.APIView):
+class FollowerView(views.APIView):
     """
     добавление в подписчики
     """
@@ -26,3 +26,18 @@ class AddFollowerView(views.APIView):
             Follower.objects.create(subscriber=request.user, user=user)
             return response.Response(status=HTTP_201_CREATED)
         return response.Response(status=HTTP_404_NOT_FOUND)
+
+    def delete(self, request, pk):
+        try:
+            sub = Follower.objects.create(subscriber=request.user, user_id=pk)
+
+        except Follower.DoesNotExist:
+            return response.Response(status=HTTP_404_NOT_FOUND)
+        sub.delete()
+        return response.Response(status=204)
+
+
+
+
+
+
