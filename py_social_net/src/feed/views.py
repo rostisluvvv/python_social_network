@@ -1,6 +1,6 @@
-from rest_framework import generics, permissions, viewsets, response
+from rest_framework import permissions, viewsets, response
 
-from ..wall.serializers import ListPostSerializer
+from ..wall.serializers import ListPostSerializer, PostSerializer
 from .services import feed_services
 
 
@@ -13,4 +13,7 @@ class FeedView(viewsets.GenericViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return response.Response(serializer.data)
 
-
+    def retrieve(self, *args, **kwargs):
+        instance = feed_services.get_single_post(kwargs.get('pk'))
+        serializer = PostSerializer(instance)
+        return response.Response(serializer.data)
