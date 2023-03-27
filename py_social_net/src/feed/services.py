@@ -10,5 +10,8 @@ class Feed:
             'create_date'
         ).select_related('user').prefetch_related('comments')
 
+    def get_single_post(self, pk):
+        return Post.objects.select_related('user').prefetch_related('comments').get(id=pk)
+
 
 feed_services = Feed()
