@@ -2,7 +2,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.admin import UserAdmin
 from django.contrib import admin
 
-from .models import UserNet
+from .models import UserNet, Technology
 
 
 class UserNetAdmin(UserAdmin):
@@ -34,3 +34,4 @@ class UserNetAdmin(UserAdmin):
 
 
 admin.site.register(UserNet, UserNetAdmin)
+admin.site.register(Technology)
