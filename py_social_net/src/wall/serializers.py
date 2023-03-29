@@ -16,6 +16,7 @@ class ListCommentSerializer(serializers.ModelSerializer):
     text = serializers.SerializerMethodField()
     children = RecursiveSerializer(many=True)
     user = serializers.ReadOnlyField(source='user.username')
+
     def get_text(self, obj):
         if obj.deleted:
             return None
